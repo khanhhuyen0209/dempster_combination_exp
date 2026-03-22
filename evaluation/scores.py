@@ -22,8 +22,8 @@ from scipy.special  import digamma, gammaln
 from sklearn.metrics import average_precision_score, roc_auc_score
 
 from edl_core  import compute_opinion
-from training  import device
-
+import torch
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 # ── Uncertainty score extraction ─────────────────────────────────────────────
 
