@@ -44,6 +44,15 @@ Fuse only heads agreeing with the majority prediction.
 completely disagree (OOD-like), deferring to cautious heads gives maximum
 uncertainty signal rather than averaging conflicting evidence.
 
+### Input-adaptive CBF
+Instead of straight CBF, scale the vacuity before fusion based on input features:
+python# Learn a small temperature network
+τ_i = temperature_net(logits)   # (N, 11) — per-sample per-head temperature
+u_i_scaled = u_i * τ_i          # sharpen or flatten each head's uncertainty
+
+**Then apply CBF with scaled vacuities**
+The temperature network is tiny (logits→11 outputs) and learns to amplify the vacuity of heads that are historically unreliable for this type of input. This preserves the theoretical CBF structure while adding input-dependence.
+
 ---
 
 ## λ head configuration
