@@ -33,7 +33,7 @@ Uncertain heads are automatically downweighted. No learnable parameters.
 Standard iterative pairwise CBF across all N heads.
 Self-weighting by vacuity. Treats all inputs the same.
 
-### Selective CBF
+### Selective CBF - Inference Time
 Fuse only heads agreeing with the majority prediction.
 - On easy ID inputs: all heads agree → full fusion
 - On hard ID inputs: partial agreement → partial fusion → higher uncertainty
